@@ -25,3 +25,17 @@ spec:
           requests:
             memory: 250Mi
             cpu: 80m
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: php-apache-service
+  labels:
+    run: php-apache
+spec:
+  ports:
+  - port: 80
+    nodePort: 30002
+  selector:
+    run: php-apache 
+  type: NodePort
