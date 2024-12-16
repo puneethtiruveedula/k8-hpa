@@ -34,25 +34,8 @@ metadata:
     run: php-apache
 spec:
   ports:
-  - protocol: TCP
-    port: 80 #service-port
-    targetPort: 8080 #target-port
+  - port: 80
+    nodePort: 30002
   selector:
     run: php-apache 
-  type: LoadBalancer
----
-# apiVersion: v1
-# kind: Service
-# metadata:
-#   name: frontend
-#   namespace: expense
-# spec:
-#   type: LoadBalancer
-#   selector:
-#     component: frontend
-#     project: expense
-#     tier: app
-#   ports:
-#   - protocol: TCP
-#     port: 80 #service-port
-#     targetPort: 8080 #target-port
+  type: NodePort
